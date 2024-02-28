@@ -10,6 +10,7 @@ import type Event from "@/types/Event";
 import fetchWeekSchedule from "@/lib/fetchWeekSchedule";
 import calculateWeek from "@/lib/calculateWeek";
 import getDayTimestamp from "@/lib/getDayTimestamp";
+import getFullWeekday from "@/lib/getFullWeekday";
 
 function Home() {
   const [chosenDay, setChosenDay] = useState<Date>(new Date());
@@ -64,17 +65,22 @@ function Home() {
 
   return (
     <>
-      {weekSchedule
-        .filter(
-          (event) =>
-            getDayTimestamp(new Date(event.start)) ===
-            getDayTimestamp(chosenDay)
-        )
-        .sort((a, b) => +a.id - +b.id)
-        .map((event) => (
-          <EventCard event={event} key={event.id} />
-        ))}
+      <div className="container p-2 pb-60">
+        {weekSchedule
+          .filter(
+            (event) =>
+              getDayTimestamp(new Date(event.start)) ===
+              getDayTimestamp(chosenDay)
+          )
+          .sort((a, b) => +a.id - +b.id)
+          .map((event) => (
+            <EventCard event={event} key={event.id} />
+          ))}
+      </div>
       <Nav>
+        <small className="text-sm font-medium leading-none">
+          {getFullWeekday(chosenDay)}
+        </small>
         <DatePicker date={chosenDay} setDate={setChosenDay} />
         <Menu todaySchedule={todaySchedule} />
       </Nav>

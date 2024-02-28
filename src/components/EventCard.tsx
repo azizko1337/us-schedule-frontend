@@ -16,7 +16,7 @@ function EventCard(props: { event: Event }) {
   const { summary, start, end } = props.event;
 
   return (
-    <Card className="relative">
+    <Card className="relative my-3">
       <CardHeader>
         <CardTitle>{summary.split(" ")[0]}</CardTitle>
         <CardDescription>

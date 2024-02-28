@@ -48,16 +48,18 @@ function Menu(props: Props) {
   if (todaySchedule.length === 0) {
     return (
       <Drawer>
-        <DrawerTrigger>Open</DrawerTrigger>
+        <DrawerTrigger>
+          <Button>Menu</Button>
+        </DrawerTrigger>
         <DrawerContent>
           <DrawerHeader>
             <DrawerTitle>No classes today!</DrawerTitle>
             <DrawerDescription>stay safe</DrawerDescription>
           </DrawerHeader>
-          <DrawerFooter>
-            <Button>Settings</Button>
+          <DrawerFooter className="items-center">
+            <Button variant="outline">Settings</Button>
             <DrawerClose>
-              <Button variant="outline">Close</Button>
+              <Button>Close</Button>
             </DrawerClose>
           </DrawerFooter>
         </DrawerContent>
@@ -69,8 +71,10 @@ function Menu(props: Props) {
   if (completedClasses.length === todaySchedule.length) {
     return (
       <Drawer>
-        <DrawerTrigger>Open</DrawerTrigger>
-        <DrawerContent>
+        <DrawerTrigger>
+          <Button>Menu</Button>
+        </DrawerTrigger>
+        <DrawerContent className="max-w-screen-sm mx-auto">
           <DrawerHeader>
             <DrawerTitle>
               {completedClasses.length}/{completedClasses.length} today{"'"}{" "}
@@ -78,10 +82,10 @@ function Menu(props: Props) {
             </DrawerTitle>
             <DrawerDescription>stay safe</DrawerDescription>
           </DrawerHeader>
-          <DrawerFooter>
-            <Button>Settings</Button>
+          <DrawerFooter className="items-center">
+            <Button variant="outline">Settings</Button>
             <DrawerClose>
-              <Button variant="outline">Close</Button>
+              <Button>Close</Button>
             </DrawerClose>
           </DrawerFooter>
         </DrawerContent>
@@ -92,7 +96,9 @@ function Menu(props: Props) {
   //we are during the class
   if (currentClasses.length) {
     <Drawer>
-      <DrawerTrigger>Open</DrawerTrigger>
+      <DrawerTrigger>
+        <Button>Menu</Button>
+      </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader>
           <DrawerTitle>!!!!</DrawerTitle>
@@ -105,7 +111,6 @@ function Menu(props: Props) {
               {completedClasses.length}/{todaySchedule.length}
             </b>
           </li>
-          <li>2nd level of jokes: 10 gold coins</li>
         </ul>
         <h3 className="container flex justify-center scroll-m-20 text-2xl font-semibold tracking-tight">
           Current classes:
@@ -113,10 +118,10 @@ function Menu(props: Props) {
         {currentClasses.map((event) => (
           <EventCard event={event} key={event.id} />
         ))}
-        <DrawerFooter>
-          <Button>Settings</Button>
+        <DrawerFooter className="items-center">
+          <Button variant="outline">Settings</Button>
           <DrawerClose>
-            <Button variant="outline">Close</Button>
+            <Button>Close</Button>
           </DrawerClose>
         </DrawerFooter>
       </DrawerContent>
@@ -126,7 +131,9 @@ function Menu(props: Props) {
   //else, we are between classes
   return (
     <Drawer>
-      <DrawerTrigger>Open</DrawerTrigger>
+      <DrawerTrigger>
+        <Button>Menu</Button>
+      </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader>
           <DrawerTitle>!!!!</DrawerTitle>
@@ -139,7 +146,6 @@ function Menu(props: Props) {
               {completedClasses.length}/{todaySchedule.length}
             </b>
           </li>
-          <li>2nd level of jokes: 10 gold coins</li>
         </ul>
         {completedClasses.length ? (
           <h3 className="container flex justify-center scroll-m-20 text-2xl font-semibold tracking-tight">
@@ -147,10 +153,10 @@ function Menu(props: Props) {
           </h3>
         ) : null}
         {completedClasses ? <EventCard event={uncompletedClasses[0]} /> : null}
-        <DrawerFooter>
-          <Button>Settings</Button>
+        <DrawerFooter className="items-center">
+          <Button variant="outline">Settings</Button>
           <DrawerClose>
-            <Button variant="outline">Close</Button>
+            <Button>Close</Button>
           </DrawerClose>
         </DrawerFooter>
       </DrawerContent>
